@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/"
+	targetNamespace="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/" elementFormDefault="qualified">
+    <xsd:element name="ConvertorRequest">
+            <!-- anoniem type -->
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="accountNumber" type="tns:accountNumberClassicType" />
+                <xsd:element name="bicCode" type="xsd:string" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="accountNumberClassicType">
+        <xsd:restriction base="xsd:positiveInteger">
+            <xsd:minInclusive value="1"/>
+            <xsd:maxInclusive value="9999999999"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

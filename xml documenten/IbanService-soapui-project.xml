@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4719e215-59f9-4dc7-a343-2623f3fe3ddd" activeEnvironment="Default" name="IbanService" resourceRoot="" soapui-version="5.1.2" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1198106d-9536-41c7-b3be-3be2ed29541b" wsaVersion="NONE" name="IbanServiceSoap12" type="wsdl" bindingName="{http://schematics.merenita.com/gsos/ibanservice/message/}IbanServiceSoap12" soapVersion="1_1" anonymous="optional" definition="http://schematics.merenita.com/gsos/ibanservice.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://schematics.merenita.com/gsos/ibanservice.wsdl"><con:part><con:url>http://schematics.merenita.com/gsos/ibanservice.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://schematics.merenita.com/gsos/ibanservice/message/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req1="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/" xmlns:rsp1="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/" xmlns:req2="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/" xmlns:rsp2="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/" xmlns:flt="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/" xmlns:srv="http://schematics.merenita.com/gsos/ibanservice/message/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/" schemaLocation="ibanserviceconvertorrequest.xsd"/>
+      <xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/" schemaLocation="ibanserviceconvertorresponse.xsd"/>
+      <xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/" schemaLocation="ibanservicevalidatorrequest.xsd"/>
+      <xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/" schemaLocation="ibanservicevalidatorresponse.xsd"/>
+      <xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/" schemaLocation="ibanserviceexceptionmessage.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="convertorrequest">
+    <wsdl:part name="convertorrequest" element="req1:ConvertorRequest"/>
+  </wsdl:message>
+  <wsdl:message name="convertorresponse">
+    <wsdl:part name="convertorresponse" element="rsp1:ConvertorResponse"/>
+  </wsdl:message>
+  <wsdl:message name="validatorrequest">
+    <wsdl:part name="validatorrequest" element="req2:ValidatorRequest"/>
+  </wsdl:message>
+  <wsdl:message name="validatorresponse">
+    <wsdl:part name="validatorresponse" element="rsp2:ValidatorResponse"/>
+  </wsdl:message>
+  <wsdl:message name="applicationfault">
+    <wsdl:part name="applicationfault" element="flt:ExceptionMessage"/>
+  </wsdl:message>
+  <wsdl:portType name="IbanServiceSoap">
+    <wsdl:operation name="convertor">
+      <wsdl:input message="srv:convertorrequest"/>
+      <wsdl:output message="srv:convertorresponse"/>
+      <wsdl:fault name="applicationfault" message="srv:applicationfault"/>
+    </wsdl:operation>
+    <wsdl:operation name="validator">
+      <wsdl:input message="srv:validatorrequest"/>
+      <wsdl:output message="srv:validatorresponse"/>
+      <wsdl:fault name="applicationfault" message="srv:applicationfault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IbanServiceSoap12" type="srv:IbanServiceSoap">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="convertor">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="applicationfault">
+        <soap12:fault name="applicationfault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validator">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="applicationfault">
+        <soap12:fault name="applicationfault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IbanService">
+    <wsdl:port name="IbanServiceSoap" binding="srv:IbanServiceSoap12">
+      <soap12:address location="http://localhost:8080/ws-producer/ws-producer"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://schematics.merenita.com/gsos/ibanserviceconvertorrequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/">
+  <xsd:element name="ConvertorRequest">
+    <!--anoniem type-->
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="accountNumber" type="tns:accountNumberClassicType"/>
+        <xsd:element name="bicCode" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="accountNumberClassicType">
+    <xsd:restriction base="xsd:positiveInteger">
+      <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="9999999999"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://schematics.merenita.com/gsos/ibanserviceconvertorresponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/">
+  <xsd:element name="ConvertorResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="newAccountNumber" type="tns:accountNumberIbanType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="accountNumberIbanType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://schematics.merenita.com/gsos/ibanservicevalidatorrequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/">
+  <xsd:element name="ValidatorRequest">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="accountNumber" type="tns:accountNumberIbanType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="accountNumberIbanType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://schematics.merenita.com/gsos/ibanservicevalidatorresponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/">
+  <xsd:element name="ValidatorResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="isIban" type="xsd:boolean"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://schematics.merenita.com/gsos/ibanserviceexceptionmessage.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/">
+  <!--Kandidaat root element-->
+  <xsd:element name="ExceptionMessage">
+    <!--anoniem type-->
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="code" type="xsd:integer"/>
+        <xsd:element name="message" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint></con:endpoints><con:operation id="8c0a935c-1600-4823-8cda-c66a66b9a95d" isOneWay="false" action="" name="convertor" bindingOperationName="convertor" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="acc2b5ee-36a8-4cc5-be6d-70ec9bc5877e" name="Correcte gegevens"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:ConvertorRequest>\r
+         <con:accountNumber>123456789</con:accountNumber>\r
+         <con:bicCode>VOWANL21</con:bicCode>\r
+      </con:ConvertorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schematics.merenita.com/gsos/ibanservice/message/IbanServiceSoap/convertorRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="07b9694e-8be2-4336-bc3a-53f5225c697e" name="Foute bank"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:ConvertorRequest>\r
+         <con:accountNumber>123456789</con:accountNumber>\r
+         <con:bicCode>VOWANL22</con:bicCode>\r
+      </con:ConvertorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schematics.merenita.com/gsos/ibanservice/message/IbanServiceSoap/convertorRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="12f2cedd-195d-46f5-b1f4-691543f9b7b8" name="Foute rekening"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:con="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <con:ConvertorRequest>\r
+         <con:accountNumber>123456782</con:accountNumber>\r
+         <con:bicCode>VOWANL21</con:bicCode>\r
+      </con:ConvertorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schematics.merenita.com/gsos/ibanservice/message/IbanServiceSoap/convertorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4c88d731-72bf-4eda-a6a6-5d9f816fc60f" isOneWay="false" action="" name="validator" bindingOperationName="validator" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="65b9d75b-ed80-4130-95c5-a3ae27b75f9e" name="Corecte iban"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:val="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <val:ValidatorRequest>\r
+         <val:accountNumber>NL55VOWA0123456789</val:accountNumber>\r
+      </val:ValidatorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schematics.merenita.com/gsos/ibanservice/message/IbanServiceSoap/validatorRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="035a62a5-b876-40d2-a34e-7ed5aaad01b4" name="Foute iban"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws-producer/ws-producer</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:val="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <val:ValidatorRequest>\r
+         <val:accountNumber>NL55VOWA0123456782</val:accountNumber>\r
+      </val:ValidatorRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schematics.merenita.com/gsos/ibanservice/message/IbanServiceSoap/validatorRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

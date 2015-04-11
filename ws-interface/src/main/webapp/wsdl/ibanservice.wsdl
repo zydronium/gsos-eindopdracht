@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:req1="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/"
+	xmlns:rsp1="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/"
+        xmlns:req2="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/"
+	xmlns:rsp2="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/"
+	xmlns:flt="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/" 	
+	xmlns:srv="http://schematics.merenita.com/gsos/ibanservice/message/"
+	targetNamespace="http://schematics.merenita.com/gsos/ibanservice/message/">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/convertorrequest/"
+				schemaLocation="ibanserviceconvertorrequest.xsd" />
+			<xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/convertorresponse/"
+				schemaLocation="ibanserviceconvertorresponse.xsd" />
+			<xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/"
+				schemaLocation="ibanservicevalidatorrequest.xsd" />
+			<xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/"
+				schemaLocation="ibanservicevalidatorresponse.xsd" />
+			<xsd:import namespace="http://schematics.merenita.com/gsos/ibanservice/exceptionmessage/"
+				schemaLocation="ibanserviceexceptionmessage.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+        <wsdl:message name="convertorrequest">
+		<wsdl:part name="convertorrequest" element="req1:ConvertorRequest"/>
+	</wsdl:message>
+	<wsdl:message name="convertorresponse">
+		<wsdl:part name="convertorresponse" element="rsp1:ConvertorResponse"/>
+	</wsdl:message>
+        <wsdl:message name="validatorrequest">
+		<wsdl:part name="validatorrequest" element="req2:ValidatorRequest"/>
+	</wsdl:message>
+	<wsdl:message name="validatorresponse">
+		<wsdl:part name="validatorresponse" element="rsp2:ValidatorResponse"/>
+	</wsdl:message>
+	<wsdl:message name="applicationfault">
+		<wsdl:part name="applicationfault" element="flt:ExceptionMessage"/>
+	</wsdl:message>
+        <wsdl:portType name="IbanServiceSoap">
+		<wsdl:operation name="convertor">
+			<wsdl:input message="srv:convertorrequest"/>
+			<wsdl:output message="srv:convertorresponse"/>
+			<wsdl:fault name="applicationfault" message="srv:applicationfault"/>
+		</wsdl:operation>
+		<wsdl:operation name="validator">
+			<wsdl:input message="srv:validatorrequest"/>
+			<wsdl:output message="srv:validatorresponse"/>
+			<wsdl:fault name="applicationfault" message="srv:applicationfault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="IbanServiceSoap12" type="srv:IbanServiceSoap">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="convertor">
+			<soap12:operation soapAction="http://gsos.jelleluteijn.com/iban/convertor" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="applicationfault">
+				<soap12:fault name="applicationfault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="validator">
+			<soap12:operation soapAction="http://gsos.jelleluteijn.com/iban/validator" style="document"/>
+			<wsdl:input>
+				<soap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap12:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="applicationfault">
+				<soap12:fault name="applicationfault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="IbanService">
+		<wsdl:port name="IbanServiceSoap" binding="srv:IbanServiceSoap12">
+			<soap12:address location="http://localhost:8080/ws-producer/ws-producer"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

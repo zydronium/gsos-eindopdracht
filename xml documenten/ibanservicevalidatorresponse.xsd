@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/"
+	targetNamespace="http://schematics.merenita.com/gsos/ibanservice/validatorresponse/" elementFormDefault="qualified">
+    <xsd:element name="ValidatorResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="isIban" type="xsd:boolean" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

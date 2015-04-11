@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/"
+	targetNamespace="http://schematics.merenita.com/gsos/ibanservice/validatorrequest/" elementFormDefault="qualified">
+    <xsd:element name="ValidatorRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="accountNumber" type="tns:accountNumberIbanType" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="accountNumberIbanType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z]{2}[0-9]{2}[A-Z]{4}[0-9]{10}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
